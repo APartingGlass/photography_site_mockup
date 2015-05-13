@@ -1,15 +1,15 @@
 @import "../bower_components/normalize-scss/_normalize.scss";
 @import "../bower_components/typeplate-starter-kit/css/_typeplate.scss";
 @import "./mixins.scss";
-
 /**
  * BOX-SIZING
  */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
-
 /**
  * GRIDS
  */
@@ -20,7 +20,6 @@
     font-size: 0;
     text-align: justify;
     position: relative;
-
     & > * {
         font-size: medium;
         text-align: left;
@@ -28,7 +27,6 @@
         width: 100%;
         vertical-align: top;
     }
-
     &:after {
         display: inline-block;
         width: 100%;
@@ -39,7 +37,6 @@
 
 @include gridify(2, 400);
 @include gridify(4, 600);
-
 /**
  * PACE (automatic pre-loader thingy)
  */
@@ -68,13 +65,199 @@
     height: 2px;
     transition: all 1s ease;
 }
-
 /**
  * GENERAL
  */
 
-img {max-width:100%;}
-
+img {
+    max-width: 100%;
+}
 /**
  * YOUR CODE HERE
  */
+
+body {
+    background-color: grey;
+}
+
+.header {
+    position: relative;
+    p {
+        width: auto;
+        font-size: 2rem;
+    }
+    span {
+        font-size: 1.5rem;
+        color: rgb(220, 56, 61);
+        font-weight: bold;
+    }
+    div {
+        width: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 2rem;
+        margin-right: 1rem;
+        .menu {
+            display: inline-block;
+            color: white;
+            transition: color 0.5s ease, visibility 0.25s ease;
+            &:hover {
+                color: black;
+            }
+        }
+        svg {
+            height: 1em;
+            width: 1em;
+            position: absolute;
+            top: 0;
+            right: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+.header> * {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    color: white;
+    fill: white;
+    transition: fill 0.5s ease;
+    &:nth-child(2) {
+        font-size: 3rem;
+        width: 1ch;
+        height: 1ch;
+    }
+    &:nth-child(3) {
+        transform: translateX(-50%);
+    }
+}
+
+.header>svg:hover {
+    fill: black;
+}
+
+.gallery {
+    max-width: 40%;
+    margin: auto;
+    &>div {
+        padding-bottom: 2rem;
+        filter: grayscale(100%);
+        position: relative;
+        transition: 0.5s filter linear;
+        &:hover {
+            filter: grayscale(0%);
+        }
+        .specs {
+            flex-grow: 1;
+            position: absolute;
+            left: 100%;
+            top: 0%;
+            height: 25%;
+            width: 50%;
+            margin-left: 3rem;
+            div {
+                font-size: 1rem;
+                padding: 0;
+                position: relative;
+                color: black;
+                span {
+                    color: rgb(220, 56, 61);
+                }
+            }
+        }
+    }
+}
+
+.camera::before {
+    content: "";
+    background-image: url(../MyIcons/svg/slr2.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 1rem;
+    right: 100%;
+    position: absolute;
+    right: 100%;
+    margin-right: 0.5rem;
+}
+
+.lens::before {
+    content: "";
+    background-image: url(../MyIcons/svg/iris.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 1rem;
+    right: 100%;
+    position: absolute;
+    right: 100%;
+    margin-right: 0.5rem;
+}
+
+.aperture::before {
+    content: "";
+    background-image: url(../MyIcons/svg/power26.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 1rem;
+    right: 100%;
+    position: absolute;
+    right: 100%;
+    margin-right: 0.5rem;
+}
+
+.shutter::before {
+    content: "";
+    background-image: url(../MyIcons/svg/photo2.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 1rem;
+    right: 100%;
+    position: absolute;
+    right: 100%;
+    margin-right: 0.5rem;
+}
+
+.ISO::before {
+    content: "";
+    background-image: url(../MyIcons/svg/iso10.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 1rem;
+    right: 100%;
+    position: absolute;
+    right: 100%;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 850px) {
+    .header>div>svg {
+        visibility: visible;
+    }
+
+    .menu {
+        visibility: hidden;
+        z-index: 0;
+    }
+    .gallery {
+        max-width: 80%;
+        margin: auto;
+        &>div {
+            margin-bottom:40%;
+            .specs {
+                top: 100%;
+                left: 0%;
+            }
+        }
+    }
+}
